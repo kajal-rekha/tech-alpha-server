@@ -11,7 +11,6 @@ const uri = process.env.MONGO_URI;
 const app = express();
 
 // BYPASS API
-// app.use("api/products", productRoute);
 
 // TEST API
 app.get("/", (req, res) => {
