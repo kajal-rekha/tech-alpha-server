@@ -1,7 +1,6 @@
 require("dotenv").config();
 
 const express = require("express");
-const cors = require("cors");
 const mongoose = require("mongoose");
 
 // VARIABLES
@@ -10,6 +9,9 @@ const uri = process.env.MONGO_URI;
 
 //EXPRESS APP
 const app = express();
+
+// BYPASS API
+// app.use("api/products", productRoute);
 
 // TEST API
 app.get("/", (req, res) => {
