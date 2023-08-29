@@ -1,7 +1,9 @@
 require("dotenv").config();
 
 const express = require("express");
+const cors = require("cors");
 const mongoose = require("mongoose");
+//const productRoutes = require("./routes/productRoute");
 
 // VARIABLES
 const port = process.env.PORT || 5000;
@@ -10,7 +12,15 @@ const uri = process.env.MONGO_URI;
 //EXPRESS APP
 const app = express();
 
+/* MIDDLEWARES */
+app.use(express.json());
+app.use(
+  cors({
+    credentials: true,
+  })
+);
 // BYPASS API
+// app.use("/api/products", productRoutes);
 
 // TEST API
 app.get("/", (req, res) => {
