@@ -1,42 +1,20 @@
 require("dotenv").config();
 
 const express = require("express");
-const cors = require("cors");
-const mongoose = require("mongoose");
-//const productRoutes = require("./routes/productRoute");
+const productRoutes = require("./routes/productRoute");
+const port = process.env.PORT || 4000;
 
-// VARIABLES
-const port = process.env.PORT || 5000;
-const uri = process.env.MONGO_URI;
-
-//EXPRESS APP
+// express app
 const app = express();
 
-/* MIDDLEWARES */
+// middleware
 app.use(express.json());
-app.use(
-  cors({
-    credentials: true,
-  })
-);
-// BYPASS API
-// app.use("/api/products", productRoutes);
-
-// TEST API
-app.get("/", (req, res) => {
-  res.status(200).json({ message: "Welcome to Tech Alpha server." });
+app.use((req, res, next) => {
+  console.log(req.path, req.method);
+  next();
 });
-
-// DATABASE
-mongoose
-  .connect(uri, {
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    app.listen(port, () => {
-      console.log(`Server running on port: ${port}`);
-    });
-  })
-  .catch((error) => {
-    console.log(error.message);
-  });
+// routes
+app.use("/api/products", productRoutes);
+app.listen(port, () => {
+  console.log(`listening on port ${port}`);
+});

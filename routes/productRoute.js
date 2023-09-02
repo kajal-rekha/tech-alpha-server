@@ -1,21 +1,20 @@
 const express = require("express");
 
-const {
-  getAllProducts,
-  getSingleProduct,
-  getCategoryProducts,
-} = require(".../controllers/productController");
-
-//Router
+// router
 const router = express.Router();
 
-//GET all products
-router.get("/", getAllProducts);
+// GET all products
+router.get("/", (req, res) => {
+  res.json({ message: "GET all products!" });
+});
 
 //GET a single product
-router.get("/:productId", getSingleProduct);
+router.get("/:id", (req, res) => {
+  res.json({ message: "GET a single product!" });
+});
 
-// GET products bt category
-router.get("/category/:category", getCategoryProducts);
-
+// POST a product
+router.post("/", (req, res) => {
+  res.json({ message: "POST a new  product" });
+});
 module.exports = router;
