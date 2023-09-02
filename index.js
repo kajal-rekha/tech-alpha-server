@@ -3,8 +3,9 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const productRoutes = require("./routes/productRoute");
-const port = process.env.PORT || 4000;
 
+const port = process.env.PORT || 4000;
+const uri = process.env.MONGO_URI;
 // express app
 const app = express();
 
