@@ -1,20 +1,22 @@
 require("dotenv").config();
-
+const cors = require("cors");
 const express = require("express");
 const mongoose = require("mongoose");
 const productRoutes = require("./routes/productRoute");
 
 const port = process.env.PORT || 4000;
-const uri = process.env.MONGO_URI;
+
 // express app
 const app = express();
 
 // middleware
+app.use(
+  cors({
+    Credentials: true,
+  })
+);
 app.use(express.json());
-app.use((req, res, next) => {
-  console.log(req.path, req.method);
-  next();
-});
+
 // routes
 app.use("/api/products", productRoutes);
 
