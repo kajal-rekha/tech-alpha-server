@@ -8,7 +8,7 @@ const getAllProducts = async (req, res) => {
 };
 
 //get a single products
-const singleProduct = async (req, res) => {
+const getSingleProduct = async (req, res) => {
   const { id } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -41,5 +41,5 @@ const postProduct = async (req, res) => {
 module.exports = {
   postProduct,
   getAllProducts,
-  singleProduct,
+  getSingleProduct,
 };
