@@ -18,18 +18,25 @@ app.use(
 );
 app.use(express.json());
 
-// routes
+// test api
+app.get("/", (req, res) => {
+  res.status(200).json({ message: "Welcome to Tech Alpha Server!" });
+});
+
+// BYPASS API
 app.use("/api/products", productRoutes);
 
 // connect to mongodb
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGO_URI, {
+    useUnifiedTopology: true,
+  })
   .then(() => {
-    // listen for tequest
+    // listen for request
     app.listen(port, () => {
       console.log(`connected to mongo and listening on port ${port}`);
     });
   })
-  .catch((err) => {
-    console.log(err);
+  .catch((error) => {
+    console.log(error.message);
   });
