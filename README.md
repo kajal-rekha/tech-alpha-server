@@ -31,8 +31,6 @@ To run the Tech Alpha Server locally, follow these steps:
   npm install
 
 
-6. The server will be running at `http://localhost:3001`.
-
 ## Links
 
 - [Live Demo](https://tech-alpha-ecommerce.netlify.app/)
