@@ -20,7 +20,7 @@ app.use(express.json());
 
 // test api
 app.get("/", (req, res) => {
-  res.status(200).json({ message: "Welcome to Tech Alpha Server!" });
+  res.status(200).json({ message: "Welcome To Tech Alpha Server!" });
 });
 
 // BYPASS API
